@@ -2,13 +2,37 @@
   "name": "playwright-tests",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "type": "module",
+  "scripts": {
+    "lint": "eslint . --ext .ts,.js",
+    "format": "prettier --write '**/*.{ts,js,tsx,jsx,json,css,md}'",
+    "test": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:file": "playwright test first-test.spec.ts --project=chromium",
+    "test:headed": "playwright test --project=chromium --headed",
+    "test:debug": "playwright test --project=chromium --debug",
+    "test:trace": "playwright test --project=chromium --trace on",
+    "test:ui": "playwright test --project=chromium --ui",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen",
+    "update:snapshots": "playwright test --update-snapshots"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.48.2",
-    "@types/node": "^22.8.1"
+    "@types/node": "^22.8.1",
+    "@typescript-eslint/eslint-plugin": "^8.57.0",
+    "@typescript-eslint/parser": "^8.57.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.4.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.0",
+    "typescript-eslint": "^8.57.0"
   }
 }
