@@ -164,14 +164,14 @@ test('web tables', async ({ page }) => {
 
   const ages = ['20', '30', '40', '200'];
 
-  for (let age of ages) {
+  for (const age of ages) {
     await page.locator('input-filter').getByPlaceholder('Age').clear();
     await page.locator('input-filter').getByPlaceholder('Age').fill(age);
     await page.waitForTimeout(500);
 
     const ageRows = page.locator('tbody tr');
 
-    for (let row of await ageRows.all()) {
+    for (const row of await ageRows.all()) {
       const cellValue = await row.locator('td').last().textContent();
 
       if (age == '200') {
