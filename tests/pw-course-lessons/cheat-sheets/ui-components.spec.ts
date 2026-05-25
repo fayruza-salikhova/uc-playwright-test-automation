@@ -182,3 +182,34 @@ test('web tables', async ({ page }) => {
     }
   }
 });
+
+test('sliders', async ({ page }) => {
+  // Update attribute. Direct DOM manipulation:
+  // Update SVG circle coordinates via browser context using evaluate().
+  // Fast way to force slider position, but bypasses real user interaction.
+  const tempGauge = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger circle');
+  await tempGauge.evaluate((node) => {
+    node.setAttribute('cx', '232.630');
+    node.setAttribute('cy', '232.630');
+  });
+  await tempGauge.click();
+
+  // Mouse movement. BoundingBox.
+  // Simulate real user drag interaction using low-level mouse events.
+  // More reliable for validating actual UI behavior end-to-end.
+  const tempBox = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger');
+  await tempBox.scrollIntoViewIfNeeded();
+
+  const box = await tempBox.boundingBox();
+  if (!box) {
+    throw new Error('Element not visible, no bounding box');
+  }
+  const x = box.x + box.width / 2;
+  const y = box.y + box.height / 2;
+  await page.mouse.move(x, y);
+  await page.mouse.down();
+  await page.mouse.move(x + 100, y);
+  await page.mouse.move(x + 100, y + 100);
+  await page.mouse.up();
+  await expect(tempBox).toContainText('30');
+});
