@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('http://localhost:4200/');
 });
 
-test('parametrized methods', async ({ navigationPage, formLayoutsPage }) => {
+test('form submittings', async ({ navigationPage, formLayoutsPage }) => {
   await navigationPage.goFormLayoutsPage();
 
   await formLayoutsPage.submitUsingTheGridFormWithCredentialsAndSelectOptions(
