@@ -1,11 +1,10 @@
 import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
+import { BasePage } from './base.page';
 
-export class DatepickerPage {
-  private readonly page: Page;
-
+export class DatepickerPage extends BasePage {
   constructor(page: Page) {
-    this.page = page;
+    super(page);
   }
 
   private get calendarInput() {

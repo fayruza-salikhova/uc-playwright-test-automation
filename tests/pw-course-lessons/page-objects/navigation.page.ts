@@ -1,10 +1,9 @@
 import type { Page } from '@playwright/test';
+import { BasePage } from './base.page';
 
-export class NavigationPage {
-  private readonly page: Page;
-
+export class NavigationPage extends BasePage {
   constructor(page: Page) {
-    this.page = page;
+    super(page);
   }
 
   async goFormLayoutsPage() {
