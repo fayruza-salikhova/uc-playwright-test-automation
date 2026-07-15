@@ -1,10 +1,13 @@
 import type { Page } from '@playwright/test';
-
 export class BasePage {
   protected readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;
+  }
+
+  async screenshot(path: string) {
+    await this.page.screenshot({ path });
   }
 
   async getTitle(): Promise<string> {

@@ -1,8 +1,11 @@
 import { test, expect } from '@playwright/test';
+import { urls } from './../../../../config/ui-tests-urls';
 
 test.describe('Auto-waiting examples', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://uitestingplayground.com/ajax');
+    await page.goto(urls.uiTestingPlayground.ajax, {
+      waitUntil: 'domcontentloaded',
+    });
     await page.getByRole('button', { name: 'Button Triggering AJAX Request' }).click();
   });
 
@@ -59,7 +62,7 @@ test.describe('Auto-waiting examples', () => {
       const successMessage = page.locator('.bg-success');
 
       //Wait for a specific network response (AJAX request)
-      await page.waitForResponse('http://uitestingplayground.com/ajaxdata');
+      await page.waitForResponse(urls.uiTestingPlayground.ajaxData);
 
       const texts = await successMessage.allTextContents();
       expect(texts).toContain('Data loaded with AJAX get request.');

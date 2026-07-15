@@ -2,7 +2,7 @@ import { test } from '../fixtures/test.fixtures';
 import { faker } from '@faker-js/faker';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://localhost:4200/');
+  await page.goto('/');
 });
 
 test('form submittings', async ({ navigationPage, formLayoutsPage }) => {

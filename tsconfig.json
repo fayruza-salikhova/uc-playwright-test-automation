@@ -9,5 +9,5 @@
     "rootDir": "./",
     "skipLibCheck": true
   },
-  "include": ["tests/**/*.ts"]
+  "include": ["tests/**/*.ts", "config/ui-tests-urls.ts"]
 }

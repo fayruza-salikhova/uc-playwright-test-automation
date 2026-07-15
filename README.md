@@ -45,6 +45,7 @@ https://github.com/bondar-artem/pw-practice-app
 
 **Show the Playwright test report filtered for the Chromium project, with details like pass/fail status, screenshots, and logs.**
 
+> npx playwright test --project=chromium --reporter=html
 > npx playwright show-report --project=chromium
 
 ## Debug
