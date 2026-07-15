@@ -33,7 +33,7 @@ export default defineConfig<TestOptions>({
     },
     {
       name: 'regression-firefox',
-      testDir: '.tests/pw-course-lessons/ui/regression-tests',
+      testDir: './tests/pw-course-lessons/ui/regression-tests',
       use: {
         browserName: 'firefox',
       },
